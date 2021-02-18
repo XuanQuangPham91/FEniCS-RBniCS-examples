@@ -1,9 +1,9 @@
-# RBniCS-examples
+# FEnics-RBniCS-examples
 
-A personal repository to store reduced basis codes on RBniCS. 
+Provide personal standard code for FEniCS-RBniCS cases. 
 
 
-## 🛠️ Installation
+# 🛠️ Installation
 
 1. Install [FEniCS](https://fenics.readthedocs.io/en/latest/installation.html#debian-ubuntu-packages) on Ubuntu via Ubuntu Personal Package Archives (PPA)
 
@@ -35,6 +35,7 @@ cd petsc-3.14.1
 ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-mpich --download-fblaslapack
 make all check
 ```
+  * alway aware the version of petsc and slepc for the coincide directories
 
 * Install **slepc-3.14.0** locally on a user-defined folder
 
@@ -47,6 +48,10 @@ export PETSC_ARCH=arch-linux2-gnu-c-debug
 ./configure
 make all check
 ```
+
+  * arch-linux2-gnu-c-debug: double check if exist this folder in petsc folder
+  * USER: ubuntu username
+  * ```make all check``` in this case will show error. Because it cannot find the installed folder in root. Just ignore this warning.
 
 3. Install **mpi** and **pip3**
 
