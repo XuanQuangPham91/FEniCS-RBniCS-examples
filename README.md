@@ -49,9 +49,9 @@ export PETSC_ARCH=arch-linux2-gnu-c-debug
 make all check
 ```
 
-  * arch-linux2-gnu-c-debug: double check if exist this folder in petsc folder
-  * USER: ubuntu username
-  * ```make all check``` in this case will show error. Because it cannot find the installed folder in root. Just ignore this warning.
+ * arch-linux2-gnu-c-debug: double check if exist this folder in petsc folder
+ * USER: ubuntu username
+ * ```make all check``` in this case will show error. Because it cannot find the installed folder in root. Just ignore this warning.
 
 3. Install **mpi** and **pip3**
 
