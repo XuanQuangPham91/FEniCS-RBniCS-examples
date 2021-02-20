@@ -50,6 +50,7 @@ make all check
 ```
 
  * arch-linux2-gnu-c-debug: double check if exist this folder in petsc folder
+	 * It can be  arch-linux-c-debug 
  * xuanquang: this is ubuntu username, you can change to your personal username
  * ```make all check``` in this case will show error. Because it cannot find the installed folder in root. Just ignore this warning.
 
@@ -79,8 +80,8 @@ sudo python3 setup.py install
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDU1NzE1MjEsLTE1MjQyNzQ1NDIsMT
-c3MzgwOTI1NywtMTYyMTY3NTgzLC02MDAwMDA2OTgsMTE5MzE1
-MTAxNywtMTYxMjIzODY3OCwxMTkzMTUxMDE3LDc1NTU1MSwtMT
-g4MjcxODIzMywtNTk0OTAwMTg3XX0=
+eyJoaXN0b3J5IjpbLTc0MDY1MTU0MiwtMTE0NTU3MTUyMSwtMT
+UyNDI3NDU0MiwxNzczODA5MjU3LC0xNjIxNjc1ODMsLTYwMDAw
+MDY5OCwxMTkzMTUxMDE3LC0xNjEyMjM4Njc4LDExOTMxNTEwMT
+csNzU1NTUxLC0xODgyNzE4MjMzLC01OTQ5MDAxODddfQ==
 -->
