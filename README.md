@@ -24,13 +24,13 @@ sudo apt-get install gfortran
 sudo apt-get install python3-distutils
 ```
 
-* Download **PETSc** and **SLEPc** (should be in /home/USER/Downloads)
+* Download **PETSc** and **SLEPc** (should be in /home/xuanquang/Downloads)
 * Install **petsc-3.14.1** locally on a user-defined folder
 
 ```bash
-mkdir /home/USER/Packages
+mkdir /home/xuanquang/Packages
 cd Packages
-tar -xzf /home/USER/Downloads/petsc-3.14.1.tar.gz
+tar -xzf /home/xuanquang/Downloads/petsc-3.14.1.tar.gz
 cd petsc-3.14.1
 ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-mpich --download-fblaslapack
 make all check
@@ -40,17 +40,17 @@ make all check
 * Install **slepc-3.14.0** locally on a user-defined folder
 
 ```bash
-cd /home/USER/Packages
-tar -xzf /home/USER/Downloads/slepc-3.14.0.tar.gz
+cd /home/xuanquang/Packages
+tar -xzf /home/xuanquang/Downloads/slepc-3.14.0.tar.gz
 cd slepc-3.14.0
-export PETSC_DIR=/home/USER/Packages/petsc-3.14.1
+export PETSC_DIR=/home/xuanquang/Packages/petsc-3.14.1
 export PETSC_ARCH=arch-linux2-gnu-c-debug
 ./configure
 make all check
 ```
 
  * arch-linux2-gnu-c-debug: double check if exist this folder in petsc folder
- * USER: ubuntu username
+ * xuanquang: this is ubuntu username, you can change to your personal username
  * ```make all check``` in this case will show error. Because it cannot find the installed folder in root. Just ignore this warning.
 
 3. Install **mpi** and **pip3**
@@ -79,8 +79,8 @@ sudo python3 setup.py install
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODk5MzI2MDgsMTc3MzgwOTI1NywtMTYyMT
-Y3NTgzLC02MDAwMDA2OTgsMTE5MzE1MTAxNywtMTYxMjIzODY3
-OCwxMTkzMTUxMDE3LDc1NTU1MSwtMTg4MjcxODIzMywtNTk0OT
-AwMTg3XX0=
+eyJoaXN0b3J5IjpbLTE1MjQyNzQ1NDIsMTc3MzgwOTI1NywtMT
+YyMTY3NTgzLC02MDAwMDA2OTgsMTE5MzE1MTAxNywtMTYxMjIz
+ODY3OCwxMTkzMTUxMDE3LDc1NTU1MSwtMTg4MjcxODIzMywtNT
+k0OTAwMTg3XX0=
 -->
