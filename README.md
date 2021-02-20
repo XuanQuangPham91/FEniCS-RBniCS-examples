@@ -14,7 +14,7 @@ sudo apt-get update
 sudo apt-get install --no-install-recommends fenics
 ```
 
-2. Install [PETSc](https://www.mcs.anl.gov/petsc/download/index.html) and [SLEPc](https://slepc.upv.es/)
+2. Install [PETSc](https://www.mcs.anl.gov/petsc/download/index.html) and [SLEPc](https://slepc.upv.es/download/)
 
 * Prerequisites
 
@@ -79,8 +79,8 @@ sudo python3 setup.py install
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ3MzkxODYyOCwtMTUyNDI3NDU0MiwxNz
-czODA5MjU3LC0xNjIxNjc1ODMsLTYwMDAwMDY5OCwxMTkzMTUx
-MDE3LC0xNjEyMjM4Njc4LDExOTMxNTEwMTcsNzU1NTUxLC0xOD
-gyNzE4MjMzLC01OTQ5MDAxODddfQ==
+eyJoaXN0b3J5IjpbLTExNDU1NzE1MjEsLTE1MjQyNzQ1NDIsMT
+c3MzgwOTI1NywtMTYyMTY3NTgzLC02MDAwMDA2OTgsMTE5MzE1
+MTAxNywtMTYxMjIzODY3OCwxMTkzMTUxMDE3LDc1NTU1MSwtMT
+g4MjcxODIzMywtNTk0OTAwMTg3XX0=
 -->
