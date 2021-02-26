@@ -2,12 +2,13 @@ from sys import path
 from dolfin import *
 from mshr import *
 from Python_module_Quang import *
+from numpy.core.records import array
+from numpy.lib.function_base import append
 
 import matplotlib.pyplot as plt
 import sys
-from numpy.core.records import array
+import numpy as np
 
-from numpy.lib.function_base import append
 sys.path.append(
     '/media/xuanquang/Gaumap Lab data/05_Git_project/FEniCS-RBniCS-examples/20210218_2D_tangential_load/'
 )
@@ -49,16 +50,21 @@ format = "png"
 def coordinates_operator(mesh, u):
     nodal_values = u.vector().get_local()
     coordinates = mesh.coordinates()
-    print(f"coordinates.shape: {coordinates.shape}")
+    # print(coordinates.shape)
+    x = coordinates[:, 0]
+    y = coordinates[:, 1]
+    print(f"len(x): {len(x)}")
+    print(f"len(y): {len(y)}")
+
     # print(f"coordinates[1]: {coordinates[1]}")
     # print(f"u(coordinates[1]): {u(coordinates[1])}")
-    vertex_values = u.compute_vertex_values()
-    print(f"vertex_values.shape: {vertex_values.shape}")
+    # vertex_values = u.compute_vertex_values()
+    # print(f"vertex_values.shape: {vertex_values.shape}")
 
-    x, y = u.split(True)
-    X = x.vector().get_local()
-    Y = y.vector().get_local()
-    return X, Y, nodal_values
+    ux, uy = u.split(True)
+    uX = ux.vector().get_local()
+    uY = uy.vector().get_local()
+    return x, y, uX, uY, nodal_values
     # return x, y, nodal_values
 
 
@@ -101,13 +107,20 @@ if __name__ == "__main__":
     u_FE = load_HDF5(V, mesh, title='u_FE')
     plot(u_FE, "displacement")
 
-    x, y, nodal_values = coordinates_operator(mesh, u_FE)
-    print(f"x coordinate (len = {len(x)})")
-    print(f"y coordinate (len = {len(y)})")
+    x, y, ux, uy, nodal_values = coordinates_operator(mesh, u_FE)
+    print(x)
+    print(f"ux (len = {len(ux)})")
+    print(f"uy (len = {len(uy)})")
     # print(f"nodal_values coordinate: {nodal_values}")
     print(f"Number of nodal_values: {len(nodal_values)}")
+    print(f"Shape of nodal_values: {len(nodal_values)}")
 
     coordinates_mesh = mesh.coordinates()
+    print(f"coordinates_mesh: {coordinates_mesh}")
+    print(f"x, y: \n {x, y}")
+    title = "coordinates_mesh"
+    np.savetxt(f"solution/{title}.txt", np.array(coordinates_mesh))
+
     # print("nodes coordinates: \n %d", coordinates_mesh)
     print(f"Number of nodes: {len(coordinates_mesh)}")
     print(f"node shape: {coordinates_mesh.shape}")
