@@ -14,7 +14,7 @@ sudo apt-get update
 sudo apt-get install --no-install-recommends fenics
 ```
 
-2. Install [PETSc](https://www.mcs.anl.gov/petsc/) and [SLEPc](https://slepc.upv.es/)
+2. Install [PETSc](https://www.mcs.anl.gov/petsc/download/index.html) and [SLEPc](https://slepc.upv.es/download/)
 
 * Prerequisites
 
@@ -24,13 +24,13 @@ sudo apt-get install gfortran
 sudo apt-get install python3-distutils
 ```
 
-* Download **PETSc** and **SLEPc** (should be in /home/USER/Downloads)
+* Download **PETSc** and **SLEPc** (should be in /home/xuanquang/Downloads)
 * Install **petsc-3.14.1** locally on a user-defined folder
 
 ```bash
-mkdir /home/USER/Packages
+mkdir /home/xuanquang/Packages
 cd Packages
-tar -xzf /home/USER/Downloads/petsc-3.14.1.tar.gz
+tar -xzf /home/xuanquang/Downloads/petsc-3.14.1.tar.gz
 cd petsc-3.14.1
 ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-mpich --download-fblaslapack
 make all check
@@ -40,18 +40,19 @@ make all check
 * Install **slepc-3.14.0** locally on a user-defined folder
 
 ```bash
-cd /home/USER/Packages
-tar -xzf /home/USER/Downloads/slepc-3.14.0.tar.gz
+cd /home/xuanquang/Packages
+tar -xzf /home/xuanquang/Downloads/slepc-3.14.0.tar.gz
 cd slepc-3.14.0
-export PETSC_DIR=/home/USER/Packages/petsc-3.14.1
-export PETSC_ARCH=arch-linux2-gnu-c-debug
+export PETSC_DIR=/home/xuanquang/Packages/petsc-3.14.1
+export PETSC_ARCH=arch-linux-c-debug
 ./configure
 make all check
 ```
 
-  * arch-linux2-gnu-c-debug: double check if exist this folder in petsc folder
-  * USER: ubuntu username
-  * ```make all check``` in this case will show error. Because it cannot find the installed folder in root. Just ignore this warning.
+ * arch-linux2-gnu-c-debug: double check if exist this folder in petsc folder
+	 * It can be  arch-linux-c-debug 
+ * xuanquang: this is ubuntu username, you can change to your personal username
+ * ```make all check``` in this case will show error. Because it cannot find the installed folder in root. Just ignore this warning.
 
 3. Install **mpi** and **pip3**
 
@@ -79,7 +80,8 @@ sudo python3 setup.py install
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3MzgwOTI1NywtMTYyMTY3NTgzLC02MD
-AwMDA2OTgsMTE5MzE1MTAxNywtMTYxMjIzODY3OCwxMTkzMTUx
-MDE3LDc1NTU1MSwtMTg4MjcxODIzMywtNTk0OTAwMTg3XX0=
+eyJoaXN0b3J5IjpbLTc0MDY1MTU0MiwtMTE0NTU3MTUyMSwtMT
+UyNDI3NDU0MiwxNzczODA5MjU3LC0xNjIxNjc1ODMsLTYwMDAw
+MDY5OCwxMTkzMTUxMDE3LC0xNjEyMjM4Njc4LDExOTMxNTEwMT
+csNzU1NTUxLC0xODgyNzE4MjMzLC01OTQ5MDAxODddfQ==
 -->
