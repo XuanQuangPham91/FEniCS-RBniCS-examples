@@ -1,3 +1,4 @@
+import numbers
 from sys import path
 from dolfin import *
 from mshr import *
@@ -9,9 +10,17 @@ import matplotlib.pyplot as plt
 import sys
 import numpy as np
 
-sys.path.append(
-    '/media/xuanquang/Gaumap Lab data/05_Git_project/FEniCS-RBniCS-examples/20210218_2D_tangential_load/'
-)
+lab_computer = False
+if lab_computer:
+    # path of lab's computer
+    sys.path.append(
+        '/media/xuanquang/Gaumap Lab data/05_Git_project/FEniCS-RBniCS-examples/20210218_2D_tangential_load/'
+    )
+else:
+    # path of MSI laptop
+    sys.path.append(
+        '/home/xuanquang/Project_Git/FEniCS-RBniCS-examples/20210218_2D_tangential_load/'
+    )
 
 try:
     import tangential_load
@@ -47,14 +56,20 @@ format = "png"
 # fy_dofs = F.sub(1).dofmap().dofs()
 
 
-def coordinates_operator(mesh, u):
+def coordinates_operator(mesh, V, u):
+    n = V.dim()
+    d = mesh.geometry().dim()
+
+    coordinates = V.tabulate_dof_coordinates()
+    coordinates.resize((n, d))
+
     nodal_values = u.vector().get_local()
-    coordinates = mesh.coordinates()
+    # coordinates = mesh.coordinates()
     # print(coordinates.shape)
-    x = coordinates[:, 0]
-    y = coordinates[:, 1]
-    print(f"len(x): {len(x)}")
-    print(f"len(y): {len(y)}")
+    dof_x = coordinates[:, 0]
+    dof_y = coordinates[:, 1]
+    print(f"len(dof_x): {len(dof_x)}")
+    print(f"len(dof_y): {len(dof_y)}")
 
     # print(f"coordinates[1]: {coordinates[1]}")
     # print(f"u(coordinates[1]): {u(coordinates[1])}")
@@ -64,21 +79,21 @@ def coordinates_operator(mesh, u):
     ux, uy = u.split(True)
     uX = ux.vector().get_local()
     uY = uy.vector().get_local()
-    return x, y, uX, uY, nodal_values
-    # return x, y, nodal_values
+    return dof_x, dof_y, uX, uY, nodal_values
+    # return dof_x, dof_y, nodal_values
 
 
 def extract_ux_uy(u):
     u_x = []
     u_y = []
-    u = array(u.vector().get_local())
-    print(u[0])
+    # u = array(u.vector().get_local())
+    print(f"u[0]: {u[0]}")
     for i in range(len(u)):
         # coordinates_V_space.append(u_FE.vector().get_local[i])
-        if i % 2 == 0:
-            u_x.append(u[i])
+        if i + 1 % 2 != 0:
+            u_x.append(u[i])  # odd index
         else:
-            u_y.append(u[i])
+            u_y.append(u[i])  # even index
     print(f"len of u_x: {len(u_x)}, {u_x[0]}")
     print(f"len of u_y: {len(u_y)}, {u_y[0]}")
     return u_x, u_y
@@ -107,8 +122,8 @@ if __name__ == "__main__":
     u_FE = load_HDF5(V, mesh, title='u_FE')
     plot(u_FE, "displacement")
 
-    x, y, ux, uy, nodal_values = coordinates_operator(mesh, u_FE)
-    print(x)
+    dof_x, dof_y, ux, uy, nodal_values = coordinates_operator(mesh, u_FE)
+    print(dof_x)
     print(f"ux (len = {len(ux)})")
     print(f"uy (len = {len(uy)})")
     # print(f"nodal_values coordinate: {nodal_values}")
@@ -117,7 +132,7 @@ if __name__ == "__main__":
 
     coordinates_mesh = mesh.coordinates()
     print(f"coordinates_mesh: {coordinates_mesh}")
-    print(f"x, y: \n {x, y}")
+    print(f"dof_x, dof_y: \n {dof_x, dof_y}")
     title = "coordinates_mesh"
     np.savetxt(f"solution/{title}.txt", np.array(coordinates_mesh))
 
