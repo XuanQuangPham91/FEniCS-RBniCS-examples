@@ -31,10 +31,10 @@ else:
         '/home/xuanquang/Project_Git/FEniCS-RBniCS-examples/20210218_2D_tangential_load/'
     )
 
-try:
-    import file
-except:
-    print("fail to import file")
+# try:
+#     import file
+# except:
+#     print("fail to import file")
 
 try:
     import tangential_load
@@ -60,12 +60,11 @@ def cal_magnitude(ux, uy):
 # import mesh
 mesh = Mesh("data/elastic_block.xml")
 V = VectorFunctionSpace(mesh, "Lagrange", 1)
-
 u_FE = load_HDF5(V, mesh, title='u_FE')
 u_magnitude = cal_u_magnitude(u=u_FE, mesh=mesh)
-u_mag = array(u_magnitude.vector().get_local())
 
 V_mag = FunctionSpace(mesh, "Lagrange", 1)
+u_mag = array(u_magnitude.vector().get_local())
 
 
 def get_coordinates_scalarvalue(V, mesh):
@@ -130,6 +129,8 @@ def plot_scatter_2D(x, y, z):
     z = u_magnitude.vector().get_local()
     p = ax.scatter(x, y, c=z, marker=".")
     fig.colorbar(p)
+    fig.tight_layout()
+
     # plt.show(block=False)
     plt.close()
 
@@ -189,24 +190,26 @@ def visualize_solution(x, y, title, interpolation_point=500):
     # print(FE_mag.shape)
 
     # Define plot
-    fig, ax1 = plt.subplots(nrows=1, ncols=1, figsize=(6, 6))
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(6, 6))
+    plt.title(r'$u^{\mathcal{N}}({\mu})$', fontsize=14, y=-0.2)
     FE_grid = griddata(FE_points, FE_mag, (grid_x, grid_y))
     FE_grid = FE_grid.reshape(interpolation_point, interpolation_point)
-    img1 = ax1.imshow(FE_grid,
-                      extent=[x.min(), x.max(),
-                              y.min(), y.max()],
-                      cmap='jet',
-                      origin='lower')
-    ax1.set_xlabel(r'$x_1$', fontsize=14)
-    ax1.set_ylabel(r'$x_2$', fontsize=14)
-    ax1.set_title(r'$u^{\mathcal{N}}({\mu})$', fontsize=14, y=-0.2)
-    divider = make_axes_locatable(ax1)
+    img = ax.imshow(FE_grid,
+                    extent=[x.min(), x.max(),
+                            y.min(), y.max()],
+                    cmap='jet',
+                    origin='lower')
+    ax.set_xlabel(r'$x_1$', fontsize=14)
+    ax.set_ylabel(r'$x_2$', fontsize=14)
+    ax.set_aspect('equal', 'box')
+    # ax.set_title(r'$u^{\mathcal{N}}({\mu})$', fontsize=14, y=-0.2)
+    divider = make_axes_locatable(ax)
     cax = divider.append_axes("right", size="5%", pad=0.1)
-    cbar1 = fig.colorbar(img1, cax=cax)
-    cbar1.formatter.set_powerlimits((0, 0))
+    cbar = fig.colorbar(img, cax=cax)
+    cbar.formatter.set_powerlimits((0, 0))
 
 
-visualize_solution(x, y, title="sample")
+visualize_solution(x, y, title=title)
 
 # In[ ]:
 
