@@ -43,6 +43,7 @@ make all check
 cd /home/xuanquang/Packages
 tar -xzf /home/xuanquang/Downloads/slepc-3.14.0.tar.gz
 cd slepc-3.14.0
+export SLEPC_DIR=/home/[username]/Packages/slepc-3.18.0
 export PETSC_DIR=/home/xuanquang/Packages/petsc-3.14.1
 export PETSC_ARCH=arch-linux-c-debug
 ./configure
