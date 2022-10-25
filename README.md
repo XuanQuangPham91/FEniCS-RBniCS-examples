@@ -28,9 +28,9 @@ sudo apt-get install python3-distutils
 * Install **petsc-3.14.1** locally on a user-defined folder
 
 ```bash
-mkdir /home/xuanquang/Packages
+mkdir /home/gaumap/Packages
 cd Packages
-tar -xzf /home/xuanquang/Downloads/petsc-3.14.1.tar.gz
+tar -xzf /home/gaumap/Downloads/petsc-3.14.1.tar.gz
 cd petsc-3.14.1
 ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-mpich --download-fblaslapack
 make all check
@@ -40,11 +40,11 @@ make all check
 * Install **slepc-3.14.0** locally on a user-defined folder
 
 ```bash
-cd /home/xuanquang/Packages
-tar -xzf /home/xuanquang/Downloads/slepc-3.14.0.tar.gz
+cd /home/gaumap/Packages
+tar -xzf /home/gaumap/Downloads/slepc-3.14.0.tar.gz
 cd slepc-3.14.0
-export SLEPC_DIR=/home/[username]/Packages/slepc-3.18.0
-export PETSC_DIR=/home/xuanquang/Packages/petsc-3.14.1
+export SLEPC_DIR=/home/gaumap/Packages/slepc-3.18.0
+export PETSC_DIR=/home/gaumap/Packages/petsc
 export PETSC_ARCH=arch-linux-c-debug
 ./configure
 make all check
