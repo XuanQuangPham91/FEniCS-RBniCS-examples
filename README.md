@@ -49,6 +49,10 @@ export PETSC_ARCH=arch-linux-c-debug
 ./configure
 make all check
 ```
+clear the evironment, use below
+```
+SLEPC_DIR
+```
 
  * arch-linux2-gnu-c-debug: double check if exist this folder in petsc folder
 	 * It can be  arch-linux-c-debug 
