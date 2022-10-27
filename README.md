@@ -76,6 +76,8 @@ unset SLEPC_DIR
 sudo apt install mpi
 sudo apt install python3-pip
 ```
+* use mpirun 
+``` mpirun -n - 8 [file directoryu] ```
 
 4. Install **petsc4py** and **slepc4py**
 
