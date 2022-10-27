@@ -68,7 +68,7 @@ unset SLEPC_DIR
 
  * arch-linux2-gnu-c-debug: double check if exist this folder in petsc folder
 	 * It can be  arch-linux-c-debug 
- * xuanquang: this is ubuntu username, you can change to your personal username
+ * gaumap: this is ubuntu username, you can change to your personal username
  * ```make all check``` in this case will show error. Because it cannot find the installed folder in root. Just ignore this warning.
 
 3. Install **mpi** and **pip3**
