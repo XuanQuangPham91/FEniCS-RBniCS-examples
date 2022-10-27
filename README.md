@@ -59,7 +59,7 @@ export SLEPC_DIR=/home/gaumap/Packages/slepc
 ./configure
 make all check
 ```
-need to clear the evironment? Use below
+need to clear the evironment directory? Use below
 ```
 unset PETSC_DIR
 unset PETSC_ARCH
