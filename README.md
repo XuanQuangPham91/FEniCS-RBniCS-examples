@@ -77,7 +77,7 @@ sudo apt install mpi
 sudo apt install python3-pip
 ```
 * use mpirun 
-``` mpirun -n - 8 [file directory] ```
+``` mpirun -n 8 [file directory] ```
 
 4. Install **petsc4py** and **slepc4py**
 
