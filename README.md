@@ -36,27 +36,26 @@ git clone https://gitlab.com/slepc/slepc
 git checkout v3.17.0
 ```
 
-* Install **petsc-3.14.1** locally on a user-defined folder
+* Install **petsc** locally on a user-defined folder
 
 ```bash
 mkdir /home/gaumap/Packages
 cd Packages
-tar -xzf /home/gaumap/Downloads/petsc-3.14.1.tar.gz
-cd petsc-3.14.1
+cd petsc
 ./configure --with-cc=gcc --with-cxx=g++ --with-fc=gfortran --download-mpich --download-fblaslapack
 make all check
 ```
   * alway aware the version of petsc and slepc for the coincide directories
 
-* Install **slepc-3.14.0** locally on a user-defined folder
+* Install **slepc** locally on a user-defined folder
 
 ```bash
 cd /home/gaumap/Packages
-tar -xzf /home/gaumap/Downloads/slepc-3.14.0.tar.gz
-cd slepc-3.14.0
-export SLEPC_DIR=/home/gaumap/Packages/slepc-3.18.0
+# tar -xzf /home/gaumap/Downloads/slepc-3.14.0.tar.gz
+cd slepc
 export PETSC_DIR=/home/gaumap/Packages/petsc
 export PETSC_ARCH=arch-linux-c-debug
+export SLEPC_DIR=/home/gaumap/Packages/slepc
 ./configure
 make all check
 ```
