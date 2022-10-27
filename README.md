@@ -59,9 +59,11 @@ export SLEPC_DIR=/home/gaumap/Packages/slepc
 ./configure
 make all check
 ```
-clear the evironment, use below
+need to clear the evironment? Use below
 ```
-SLEPC_DIR
+unset PETSC_DIR
+unset PETSC_ARCH
+unset SLEPC_DIR
 ```
 
  * arch-linux2-gnu-c-debug: double check if exist this folder in petsc folder
