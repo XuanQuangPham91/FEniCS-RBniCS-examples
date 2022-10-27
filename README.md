@@ -24,7 +24,7 @@ sudo apt-get install gfortran
 sudo apt-get install python3-distutils
 ```
 
-* Download **PETSc** and **SLEPc** (should be in /home/xuanquang/Downloads)
+* Download **PETSc** and **SLEPc** (should be in /home/[username]/Downloads)
 * Install **petsc-3.14.1** locally on a user-defined folder
 
 ```bash
