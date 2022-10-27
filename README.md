@@ -28,7 +28,7 @@ sudo apt-get install python3-distutils
 * or 
 ```
 git clone -b release https://gitlab.com/petsc/petsc.git petsc
-git checkout v3.17.0
+git checkout v3.17.1
 ```
 
 ```
